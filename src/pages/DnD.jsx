@@ -6,6 +6,8 @@ function DnD() {
 
     useEffect(()=>{
 
+      const {VITE_DND} = import.meta.env;
+
         let controller =new AbortController()
         let options = {
             method: 'GET',
@@ -14,7 +16,7 @@ function DnD() {
             },
             signal: controller.signal
         }
-        fetch("https://www.dnd5eapi.co/api/ability-scores/cha", options)
+        fetch(VITE_DND, options)
         .then(res=>res.json())
         .then(data=>{setDnd(data); console.log(data)})
         .catch(err => console.log(err))

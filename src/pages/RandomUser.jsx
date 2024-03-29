@@ -6,6 +6,7 @@ function RandomUser() {
 
     useEffect(()=>{
 
+      const{VITE_RANDOMUSER} = import.meta.env;
         let controller =new AbortController()
         let options = {
             method: 'GET',
@@ -14,7 +15,7 @@ function RandomUser() {
             },
             signal: controller.signal
         }
-        fetch("https://randomuser.me/api/", options)
+        fetch(VITE_RANDOMUSER, options)
         .then(res=>res.json())
         .then(data=>{setRandom(data); console.log(data)})
         .catch(err => console.log(err))

@@ -6,6 +6,8 @@ function FakeStore() {
 
     useEffect(()=>{
 
+      const{VITE_FAKESTORE} = import.meta.env;
+
         let controller =new AbortController()
         let options = {
             method: 'GET',
@@ -14,7 +16,7 @@ function FakeStore() {
             },
             signal: controller.signal
         }
-        fetch('https://fakestoreapi.com/products', options)
+        fetch(VITE_FAKESTORE, options)
         .then(res=>res.json())
         .then(data=>setStore(data))
         .catch(err => consolelog(err))

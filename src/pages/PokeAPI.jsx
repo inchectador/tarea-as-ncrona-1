@@ -8,8 +8,16 @@ function PokeAPI() {
 
     useEffect(()=>{
 
-      
-        fetch('https://pokeapi.co/api/v2/pokemon')
+      const{VITE_POKE} = import.meta.env;
+      let controller =new AbortController()
+      let options = {
+          method: 'GET',
+          headers: {
+              'Content-Type':'application/json'
+          },
+          signal: controller.signal
+      }
+        fetch(VITE_POKE, options)
         .then(res=>res.json())
         .then(data=>{setPoke(data); console.log(data)})
         .catch(err => consolelog(err))

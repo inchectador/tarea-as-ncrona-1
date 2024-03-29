@@ -7,6 +7,7 @@ function place() {
 
     useEffect(()=>{
 
+      const{VITE_PLACEHOLDER} = import.meta.env;
         let controller =new AbortController()
         let options = {
             method: 'GET',
@@ -15,7 +16,7 @@ function place() {
             },
             signal: controller.signal
         }
-        fetch("https://jsonplaceholder.typicode.com/todos", options)
+        fetch(VITE_PLACEHOLDER, options)
         .then(res=>res.json())
         .then(data=>setPlaceholder(data))
         .catch(err => consolelog(err))
