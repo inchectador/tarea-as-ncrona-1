@@ -1,0 +1,48 @@
+
+/* Header */
+
+.header{
+    display: flex;
+    justify-content: space-between;
+}
+
+
+.header__lista{
+    display: flex;
+    justify-content: space-between;
+    list-style-type: none;
+}
+
+.header__elementoLista{
+    padding: 0.8rem;
+}
+
+
+/* hero-Image */
+
+.inicio__div{
+    background-image: url('../../media/photos/hero-image.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+   
+}
+
+.inicio__titulo{
+    display: flex;
+    justify-content: center;
+    position: relative;
+    top: 250px;
+    color: #fff;
+    font-size: 3rem;
+}
+
+.inicio__subtitulo{
+    display: flex;
+    justify-content: center;
+    position: relative;
+    top: 250px;
+    color: #fff;
+    font-size: 2rem;
+}

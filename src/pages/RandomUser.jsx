@@ -1,0 +1,39 @@
+import React from 'react'
+import { useEffect, useState } from 'react'
+
+function RandomUser() {
+    const [random, setRandom] = useState({})
+
+    useEffect(()=>{
+
+        let controller =new AbortController()
+        let options = {
+            method: 'GET',
+            headers: {
+                'Content-Type':'application/json'
+            },
+            signal: controller.signal
+        }
+        fetch("https://randomuser.me/api/", options)
+        .then(res=>res.json())
+        .then(data=>{setRandom(data); console.log(data)})
+        .catch(err => console.log(err))
+        .finally(() =>controller.abort())
+
+    }, [])
+
+  return (
+    <>
+    <ul>
+        {random.results.map((usuario,index)=>
+        <li key={index}>{usuario.name.first} {usuario.name.last}, live in {usuario.location.state}</li>
+       )}  
+    </ul>
+   
+
+
+    </>
+  )
+}
+
+export default RandomUser
